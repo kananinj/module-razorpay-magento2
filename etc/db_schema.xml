@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!-- move to Kananinj payment module  -->
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="Kananinj_payment_transaction" resource="default" engine="innodb" comment="Payment Transaction History">
+        <column xsi:type="int" name="id" identity="true" padding="10" unsigned="true" nullable="false" comment="Entity Id"/>
+        <column xsi:type="int" name="store_id" padding="10" unsigned="true" nullable="false" comment="store id"/>
+        <column xsi:type="int" name="quote_id" padding="10" unsigned="true" nullable="false" comment="quote id"/>
+        <column xsi:type="varchar" name="order_increment_id" nullable="true" length="30" comment="order increment id"/>
+        <column xsi:type="varchar" name="payment_method"  nullable="false" length="30" comment="payment method"/>
+        <column xsi:type="varchar" name="merchant_key"  nullable="false" length="30" comment="merchant key"/>                                
+        <column xsi:type="varchar" name="merchant_txn_id"  nullable="false" length="30" comment="merchant unique txn number"/>        
+        <column xsi:type="varchar" name="payment_txn_id"  nullable="true" length="30" comment="payment gateway order/payment id"/>
+        <column xsi:type="varchar" name="txn_status"  nullable="true" length="10" comment="txn status"/>
+        <column xsi:type="varchar" name="currency"  nullable="true" length="10" comment="quote base currency"/>
+        <column xsi:type="decimal" name="amount"  nullable="false" scale="4" comment="quote base grand total"/>                
+        <column xsi:type="varchar" name="customer_name"  nullable="true" length="100" comment="customer name"/>        
+        <column xsi:type="varchar" name="customer_email"  nullable="true" length="100" comment="customer email"/>        
+        <column xsi:type="varchar" name="customer_mobile"  nullable="true" length="20" comment="customer mobile"/>
+        <column xsi:type="smallint" name="verified" unsigned="true" nullable="false" identity="false" default="0" comment="is verified"/>                
+        <column xsi:type="datetime" name="created_at" default="CURRENT_TIMESTAMP" comment="created at"/>
+        <column xsi:type="datetime" name="updated_at" default="CURRENT_TIMESTAMP" on_update="true" comment="updated at"/>        
+        <constraint xsi:type="foreign" referenceId="Kananinj_payment_transaction_quote_id" 
+                    table="Kananinj_payment_transaction" column="quote_id" 
+                    referenceTable="quote" referenceColumn="entity_id" onDelete="CASCADE"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+
+        <index referenceId="payment_transaction_history_fulltext_index" indexType="fulltext">
+            <column name="order_increment_id"/>
+            <column name="merchant_txn_id"/>
+            <column name="payment_method"/>
+            <column name="payment_txn_id"/>
+            <column name="customer_name"/>
+            <column name="customer_email"/>
+            <column name="customer_mobile"/>
+        </index>  
+    </table>
+</schema>

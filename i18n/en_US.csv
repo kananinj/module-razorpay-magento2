@@ -1,0 +1,10 @@
+rzp_order_id,"Razorpay Order ID"
+rzp_payment_id,"Razorpay Payment ID"
+method,"Payment Mode"
+status,"Razorpay Payment Status"
+txnid,"Merchant Transaction Number"
+amount,"Amount"
+wallet,Wallet
+card_id,"Cad Id"
+bank,"Bank"
+vpa,"UPI ID"

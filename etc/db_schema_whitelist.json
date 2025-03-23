@@ -1,0 +1,30 @@
+{
+    "Kananinj_payment_transaction": {
+        "column": {
+            "id": true,
+            "store_id": true,
+            "quote_id": true,
+            "order_increment_id": true,
+            "payment_method": true,
+            "merchant_key": true,
+            "merchant_txn_id": true,
+            "payment_txn_id": true,
+            "txn_status": true,
+            "currency": true,
+            "amount": true,
+            "customer_name": true,
+            "customer_email": true,
+            "customer_mobile": true,
+            "verified": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "FTI_FBF508B1825405E27726011755B7B70B": true
+        },
+        "constraint": {
+            "Kananinj_PAYMENT_TRANSACTION_QUOTE_ID_QUOTE_ENTITY_ID": true,
+            "PRIMARY": true
+        }
+    }
+}

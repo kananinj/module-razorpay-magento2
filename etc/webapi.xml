@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- For Guest Quote  -->
+    <route url="/V1/guest-carts/:cartId/razorpay-payment-reference" method="POST">
+        <service class="Kananinj\Razorpay\Api\PaymentManagementInterface" method="guestCart"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    
+    <!-- For Customer Quote  -->
+    <route url="/V1/carts/mine/razorpay-payment-reference" method="POST">
+        <service class="Kananinj\Razorpay\Api\PaymentManagementInterface" method="customerCart"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    
+    <!-- For Razorpay payment validation  -->
+    <route url="/V1/razorpay/payment/validate" method="POST">
+        <service class="Kananinj\Razorpay\Api\PaymentManagementInterface" method="customerCart"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+
+</routes>

@@ -1,0 +1,24 @@
+{
+    "name": "kananinj/module-razorpay-magento2",
+    "description": "magento 2 razorpay online payment module",
+    "type": "magento2-module",
+    "authors": [
+        {
+            "name": "Nikunj Kanani",
+            "email": "kananinj@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "razorpay/razorpay": "2.9.0"
+    },
+    "version": "1.0.0",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Kananinj\\Razorpay\\": ""
+        }
+    }
+}
